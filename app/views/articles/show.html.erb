@@ -1,0 +1,44 @@
+<body class="bg-success">
+  <div class="container">
+    <div class="row">
+  	  <div class="col-md-6 mt-5">		
+        <div class="card bg-info text-light">
+        	<%= image_tag @article.cover_image.url %>
+          <div class="card-header ">
+            <p>
+  		        <strong>Title:</strong>
+  		        <%= @article.title %>
+  		      </p>		 
+  		      <p>
+              <strong>Text:</strong>
+  		        <%= @article.text %>
+  		      </p>
+            <p>
+              <strong>ckeditor</strong>
+            <%= @article.template_text.html_safe %>
+            </p>
+  		    </div>
+  		    <div class="card-body">
+  		      <h2>Comments</h2>
+  		      <%= render @article.comments %>
+  		    </div>
+  	    </div>
+      </div>
+
+      <div class="col-md-6 mt-5">
+        <div class="card bg-info">
+        	<div class="card-header bg-secondary">
+        	  <h2>Add a comment:</h2>
+        	</div>
+          <div class="card-body text-light">         
+            <%= render 'comments/form' %>
+            <div class="card-footer ">
+              <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %> 
+              <%= link_to 'Back', articles_path, class: "btn btn-primary" %>
+            </div>         			
+          </div>         		
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

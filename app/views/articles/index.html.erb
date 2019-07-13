@@ -1,0 +1,32 @@
+<body class="bg-warning">
+  <div class="container mt-5 "> 
+    <h1 class="text-center">Listing articles</h1>
+    <%= link_to 'New article', new_article_path,class: "btn btn-primary h01" , data: {turbolinks: false}%>
+    <div class="row">    
+      <% @articles.each do |article| %>
+      <div class="col-md-4 mt-3">    
+        <div class="card">
+          <%=link_to article_path(article) do %>
+          <%= image_tag article.cover_image.url ,class: "i01"%>
+          <% end %>
+          <div class="card-body">
+            <h3>Title</h3>
+            <%= article.title %>
+            <h6>Text</h6>
+            <%= article.text %>
+            <%= article.template_text.html_safe %>
+            <div class="card-footer ">
+
+            <%= link_to 'Show', article_path(article),class: "btn btn-secondary"%>
+            <%= link_to 'Edit', edit_article_path(article) ,class: "btn btn-info ed01"%>
+            <%= link_to 'Destroy', article_path(article),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' },class: "btn btn-success ed01"%>
+            </div>           
+          </div> 
+        </div>       
+      </div>
+      <% end %>
+    </div> 
+  </div>
+</body>
